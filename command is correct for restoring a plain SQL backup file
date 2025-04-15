@@ -1,0 +1,25 @@
+Yes, your command is correct for restoring a plain SQL backup file:- 
+                                          /usr/local/pgsql/15/bin/psql -U postgres -f /usr/local/pgsql/15/bin/server_database_backup_postgres.sql
+
+Note: The backup file is exist on server and this is the file path of bakup.sql file : /usr/local/pgsql/15/bin/server_database_backup_postgres.sql....
+
+
+! : Prerequisites Checklist
+                  PostgreSQL server must be running   :
+                    server is stop then you start this :  /usr/local/pgsql/15/bin/pg_ctl -D /usr/local/pgsql/15/data/ start
+                    check server is running or not : /usr/local/pgsql/15/bin/pg_ctl -D /usr/local/pgsql/15/data/ status
+                     stop the postgres server : /usr/local/pgsql/15/bin/pg_ctl -D /usr/local/pgsql/15/data/ stop 
+
+
+2;   Restore into a specific DB: 
+     If the file is meant to restore into an existing database:   
+                                  /usr/local/pgsql/15/bin/psql -U postgres -d mydatabase -f /usr/local/pgsql/15/bin/server-database_backup_postgres.sql
+ 3:  If password is required:- 
+                                      export PGPASSWORD='your_password_here'
+                                      /usr/local/pgsql/15/bin/psql -U postgres -f /usr/local/pgsql/15/bin/server_database_backup_postgres.sql
+
+4: To Monitor for Errors Debug with command : 
+                     /usr/local/pgsql/15/bin/psql -U postgres -f /usr/local/pgsql/15/bin/server_database_backup_postgres.sql 2> restore_errors.log
+
+
+
